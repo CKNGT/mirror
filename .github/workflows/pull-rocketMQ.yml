@@ -1,0 +1,18 @@
+name: Pull RocketMQ Image
+on: workflow_dispatch
+
+jobs:
+  pull:
+    runs-on: ubuntu‑latest
+    steps:
+      - name: Pull image
+        run: docker pull apache/rocketmq:5.2.0
+
+      - name: Save image
+        run: docker save apache/rocketmq:5.2.0 > rocketmq.tar
+
+      - name: Upload artifact
+        uses: actions/upload‑artifact@v4
+        with:
+          name: rocketmq
+          path: rocketmq.tar
