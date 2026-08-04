@@ -1,0 +1,18 @@
+name: Pull Redis Image
+on: workflow_dispatch
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull image
+        run: docker pull redis:latest
+
+      - name: Save image
+        run: docker save redis:latest > redis.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: redis
+          path: redis.tar
