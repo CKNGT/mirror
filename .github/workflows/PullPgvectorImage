@@ -1,0 +1,18 @@
+name: Pull pgvector Image
+on: workflow_dispatch
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull image
+        run: docker pull pgvector/pgvector:pg16
+
+      - name: Save image
+        run: docker save pgvector/pgvector:pg16 > pgvector.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pgvector
+          path: pgvector.tar
