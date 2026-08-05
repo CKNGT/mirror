@@ -1,0 +1,18 @@
+name: Pull RocketMQ‑Dashboard Image
+on: workflow_dispatch
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull image
+        run: docker pull apacherocketmq/rocketmq-dashboard:2.1.0
+
+      - name: Save image
+        run: docker save apacherocketmq/rocketmq-dashboard:2.1.0 > rocketmq-dashboard.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketmq-dashboard
+          path: rocketmq-dashboard.tar
