@@ -12,7 +12,7 @@ jobs:
         run: docker save rustfs/rustfs:latest > rustfs.tar
 
       - name: Upload artifact
-        uses: actions/upload‑artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: rustfs
           path: rustfs.tar
