@@ -12,7 +12,7 @@ jobs:
         run: docker save apache/rocketmq:5.2.0 > rocketmq.tar
 
       - name: Upload artifact
-        uses: actions/upload‑artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: rocketmq
           path: rocketmq.tar
